@@ -93,6 +93,10 @@ class LanguageServer:
             from monitors4codegen.multilspy.language_servers.omnisharp.omnisharp import OmniSharp
 
             return OmniSharp(config, logger, repository_root_path)
+        elif config.code_language == Language.CPP:
+             from monitors4codegen.multilspy.language_servers.clangd.clangd import ClangD
+ 
+             return ClangD(config, logger, repository_root_path)
         else:
             logger.log(f"Language {config.code_language} is not supported", logging.ERROR)
             raise MultilspyException(f"Language {config.code_language} is not supported")
